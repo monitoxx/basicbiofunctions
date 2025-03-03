@@ -6,7 +6,8 @@ import pandas as pd
 def gc_content(sequence):
     '''It processes a nucleotide sequence counting only Guanine and Cytosine bases
      for calculating the GC percentage of the sequence and additionally the total
-     length. Returns GC content and Length in this particular order.  Refer to the example: www.github.com/monitoxx/Retrovirus-Analyzer-V2'''
+     length. Returns GC content and Length in this particular order.
+        Refer to the example: www.github.com/monitoxx/Retrovirus-Analyzer-V2'''
 
     sequence = sequence.rstrip("\n")
     sequence = sequence.upper()
@@ -26,7 +27,8 @@ def sequence_reader(file_name, gene_name):
     The input has to be the file name with extension, as it is on the file directory (Example: sequence.txt
     or sequence.fasta) and the gene name exactly as in the sequence (Example: [gene=gag]).
     The files have to be in coding sequences format and the gene in str. The output from this function is
-    the Genebank code of the sequence and the sequence respectively. Refer to the example: www.github.com/monitoxx/Retrovirus-Analyzer-V2'''
+    the Genebank code of the sequence and the sequence respectively.
+        Refer to the example: www.github.com/monitoxx/Retrovirus-Analyzer-V2'''
     sequence = ''
     sequence_name = None
 
@@ -57,7 +59,8 @@ def gc_list_generator(sequence, sequence_name):
     '''Generates a Guanine-Cytosine percentage list from sections of the nucleotide sequence entered. It does the same
     for a random shuffled sequence generated from the latter. The step length is 70 positions. It returns in the following
     order: the position list (for plotting ease purposes), the GC list, the random GC list and the GenBank code list
-    from the sequence entered. Refer to the example: www.github.com/monitoxx/Retrovirus-Analyzer-V2'''
+    from the sequence entered.
+        Refer to the example: www.github.com/monitoxx/Retrovirus-Analyzer-V2'''
     position_list = []
     gc_list = []
     gc_list_random = []
@@ -110,6 +113,7 @@ def df_creator(file_names, gene_name):
       heatmap_data: a dataframe specifically for doing a heatmap with the data of the GC content from the original
       sequence, partitioned every 70 nucleotides. The pivoted version of df_gc_content_lists_exploded only with genbank code,
       position and GC content.
+        Refer to the example: www.github.com/monitoxx/Retrovirus-Analyzer-V2
      '''
     # Create an empty dataFrame
     df_sequences = pd.DataFrame(columns=['GenBank Code', 'Sequence', 'Length'])
@@ -172,6 +176,10 @@ def df_creator(file_names, gene_name):
 
 
 def database_sample(file_name, gene_name):
+    '''This function is created for picking the first 9 sequences in a NCBI nucleotide database for analysis purposes. It
+    creates a series of subfiles where each of the sequences are saved, and so are their file names. The input to this function
+    has to be a database file name and the gene name to analyze (Example: 'gag').
+        Refer to the example: www.github.com/monitoxx/Retrovirus-Analyzer-V2'''
     gene_name = str(gene_name)
     file_names = []
     try:
